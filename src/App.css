@@ -1,0 +1,40 @@
+nav {
+  /* background-color: var(--primary-color); */
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+  padding: 0 5rem;
+  position: absolute;
+  top: 2rem;
+  right: 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: 2px;
+  padding: 1.5rem 3rem;
+  font-size: 1.4rem;
+  border: 1px solid var(--white-color);
+}
+
+nav a.active {
+  background-color: var(--secondary-color);
+}
+
+nav button {
+  padding: 1rem 2rem;
+  border: none;
+  /* background-color: var(--primary-color);
+  color: var(--white-color); */
+  cursor: pointer;
+}
+
+nav svg {
+  vertical-align: top;
+}
+
+button:disabled {
+  pointer-events: none;
+}

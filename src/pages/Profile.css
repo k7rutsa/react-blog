@@ -1,0 +1,26 @@
+.profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15rem 0 5rem 0;
+}
+
+.profile-page .profile-items img {
+  border-radius: 100%;
+  object-fit: cover;
+  width: 15rem;
+  height: 15rem;
+  margin-bottom: 10px;
+}
+
+.profile-page .profile-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 700px;
+  border: 1px solid var(--primary-color);
+  padding: 5rem;
+  color: var(--white-color);
+  font-weight: 300;
+}

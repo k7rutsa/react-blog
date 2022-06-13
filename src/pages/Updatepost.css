@@ -1,0 +1,63 @@
+.updatepost-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15rem 0 5rem 0;
+}
+
+.updatepost-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  /* background-color: var(--primary-color); */
+  border: 1px solid var(--white-color);
+  padding: 5rem;
+}
+
+.updatepost-page input {
+  padding: 1rem 30rem 1rem 1rem;
+  font-size: 1.4rem;
+}
+
+.updatepost-page form button {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: var(--white-color);
+  border: none;
+  cursor: pointer;
+}
+
+.updatepost-page form button:hover {
+  background-color: var(--tertiery-color);
+  color: var(--white-color);
+}
+
+.updatepost-page form span {
+  color: var(--white-color);
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.updatepost-page form label {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.updatepost-page form label input {
+  padding: 1rem 0 0 0;
+  color: var(--white-color);
+}
+
+.updatepost-page form span span {
+  color: var(--tertiery-color);
+  cursor: pointer;
+}
+
+.updatepost-page textarea {
+  width: 100%;
+  padding: 1rem 0 0 1rem;
+  /* color: var(--white-color); */
+  margin-bottom: -1rem;
+}

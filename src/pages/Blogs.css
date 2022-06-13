@@ -1,0 +1,115 @@
+.blogs-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 15rem 0 5rem 0;
+  gap: 5rem;
+}
+
+.blogs-page article {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 30rem;
+  background-color: var(--primary-color);
+  padding: 1rem;
+  position: relative;
+}
+
+.blogs-page article img {
+  max-height: 18rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.blogs-page article .contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  /* color: var(--white-color); */
+}
+
+.blogs-page article .contents h2 {
+  font-size: 2.4rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.blogs-page article .contents p {
+  margin: 1rem 0 0.7rem 0;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.blogs-page article .contents span {
+  font-weight: 300;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  font-style: italic;
+}
+
+/*  */
+.blogs-page .btns {
+  display: flex;
+  bottom: 2rem;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.blogs-page .btns span {
+  margin-top: -20px;
+}
+.blogs-page .btns span svg {
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.blogs-page button,
+.blogs-page a {
+  margin: 0 2rem;
+  padding: 1rem 2rem;
+  background-color: var(--white-color);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  color: var(--white-color);
+  display: block;
+}
+
+.blogs-page button:hover,
+.blogs-page a:hover {
+  background-color: var(--tertiery-color);
+}
+
+.blogs-page .edit {
+  background-color: var(--tertiery-color);
+}
+
+.blogs-page .delete {
+  background-color: var(--secondary-color);
+}
+
+.blogs-page .delete:hover {
+  background-color: var(--secondary-color);
+}
+
+.blogs-page article .contents a.readmore {
+  color: var(--secondary-color);
+  /* align-self: center; */
+  display: inline;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: max-content;
+  text-decoration: underline;
+  color: var(--tertiery-color);
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+}

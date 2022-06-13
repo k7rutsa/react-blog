@@ -1,0 +1,80 @@
+.blog-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15rem 0 5rem 0;
+}
+
+.blog-page article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 800px;
+  background-color: var(--primary-color);
+  padding: 2rem;
+  text-align: center;
+}
+
+.blog-page article img {
+  max-height: 25rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.blog-page article .contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  /* color: var(--white-color); */
+}
+
+.blog-page article .contents h2 {
+  font-size: 2.4rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.blog-page article .contents p {
+  margin: 1rem 0 0.7rem 0;
+  font-weight: 300;
+}
+
+.blog-page .btns {
+  display: flex;
+}
+
+.blog-page span {
+  margin: 1rem;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.blog-page button,
+.blog-page a {
+  margin: 2rem;
+  padding: 1rem 2rem;
+  background-color: var(--white-color);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  color: var(--white-color);
+}
+
+.blog-page button:hover,
+.blog-page a:hover {
+}
+
+.blog-page .edit {
+  background-color: var(--tertiery-color);
+}
+
+.blog-page .delete {
+  background-color: var(--secondary-color);
+}
+
+.blog-page .delete:hover {
+  background-color: var(--secondary-color);
+}
