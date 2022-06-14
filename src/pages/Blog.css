@@ -78,3 +78,36 @@
 .blog-page .delete:hover {
   background-color: var(--secondary-color);
 }
+
+.comments {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.comments textarea {
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem 1rem;
+}
+
+.comments textarea {
+  height: 10rem;
+}
+
+.comments button {
+  border: 1px solid var(--dark-color);
+  color: var(--dark-color);
+  display: inline-block;
+  margin: 2rem 0;
+}
+
+.comments button:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+.comments ul li {
+  list-style: none;
+  margin: 2rem;
+  background-color: antiquewhite;
+  padding: 1rem;
+}

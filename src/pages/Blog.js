@@ -4,6 +4,7 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import {
   doc,
   getDoc,
+  onSnapshot,
   deleteDoc,
   updateDoc,
   arrayUnion,
@@ -12,29 +13,83 @@ import {
 import { db } from "../firebase.js";
 import { AuthContext } from "../context/AuthContext";
 import loader from "../loader.jpg";
+import { v4 as uuidv4 } from "uuid";
+import { AiFillDelete } from "react-icons/ai";
 
 const Blog = () => {
   let { id } = useParams();
   let [post, setpost] = useState();
   let [like, setlike] = useState(null);
+  let [usercomments, setusercomments] = useState(null);
 
   let userState = useContext(AuthContext);
   let navigate = useNavigate();
   let [loading, setloading] = useState(false);
 
   useEffect(() => {
-    getsingledoc();
+    const unsub = onSnapshot(doc(db, "posts", id), (doc) => {
+      if (doc.exists()) {
+        setpost(doc.data());
+        setusercomments(doc.data().comments);
+        setloading(true);
+      } else {
+        console.log("No such document!");
+      }
+
+      return () => {
+        unsub();
+      };
+    });
+
+    // getsingledoc();
   }, []);
 
-  let getsingledoc = async () => {
-    const docRef = doc(db, "posts", id);
-    const docSnap = await getDoc(docRef);
+  // let getsingledoc = async () => {
+  //   const docRef = doc(db, "posts", id);
+  //   const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-      setpost(docSnap.data());
-      setloading(true);
-    } else {
-      console.log("No such document!");
+  //   if (docSnap.exists()) {
+  //     setpost(docSnap.data());
+  //     setusercomments(docSnap.data().comments);
+  //     setloading(true);
+  //   } else {
+  //     console.log("No such document!");
+  //   }
+  // };
+
+  let handlecomment = (e) => {
+    e.preventDefault();
+
+    try {
+      async function updatedoc() {
+        const docRef = await updateDoc(doc(db, "posts", id), {
+          comments: arrayUnion({
+            comment: e.target[0].value,
+            userid: userState.uid,
+            commentid: uuidv4(),
+            email: userState.email,
+            username: userState.displayName,
+          }),
+        });
+        console.log("Updated Comments");
+      }
+      updatedoc();
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
+  let deleteComment = (c) => {
+    try {
+      async function updatedoc() {
+        const docRef = await updateDoc(doc(db, "posts", id), {
+          comments: arrayRemove(c),
+        });
+        console.log("Deteted Comments");
+      }
+      updatedoc();
+    } catch (e) {
+      console.error("Error adding document: ", e);
     }
   };
 
@@ -48,7 +103,6 @@ const Blog = () => {
             <img src={post?.postimage} />
             <div className="contents">
               <h2>{post?.title}</h2>
-
               <p>{post?.content}</p>
               <div className="btns">
                 {post?.useid === userState?.uid && (
@@ -69,6 +123,45 @@ const Blog = () => {
                     </NavLink>
                   </>
                 )}
+              </div>{" "}
+              <hr />
+              <div className="comments">
+                <ul>
+                  {usercomments != null &&
+                    usercomments.map((c) => {
+                      return (
+                        <li key={c.commentid}>
+                          <strong>{c.username}</strong> commented: {c.comment}
+                          {userState.uid == c.userid ? (
+                            <span onClick={() => deleteComment(c)}>
+                              <AiFillDelete
+                                style={{
+                                  fontSize: "2rem",
+                                  verticalAlign: "text-bottom",
+                                  color: "#e84545",
+                                  cursor: "pointer",
+                                }}
+                              />
+                            </span>
+                          ) : null}
+                        </li>
+                      );
+                    })}
+                </ul>
+                <h1 style={{ color: "#000", margin: "2rem" }}>
+                  Write a comment
+                </h1>
+                <form onSubmit={handlecomment}>
+                  <label htmlFor="comment"></label>
+
+                  <textarea
+                    id="comment"
+                    name="comment"
+                    placeholder="Write comments here..."
+                    required
+                  ></textarea>
+                  <button type="submit">Post Comment</button>
+                </form>
               </div>
             </div>
           </article>
