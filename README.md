@@ -7,4 +7,4 @@ Features includes:
 - Only authenticated users can create post with title, contents & blog post image.
 - Blog posts shows aditional timestamp, author.
 - Authenticated users can delete or update their own post.
-- Users can also like & dislike post.
+- Users can also comment, like & dislike post.
