@@ -132,7 +132,7 @@ const Blog = () => {
                       return (
                         <li key={c.commentid}>
                           <strong>{c.username}</strong> commented: {c.comment}
-                          {userState.uid == c.userid ? (
+                          {userState?.uid == c.userid ? (
                             <span onClick={() => deleteComment(c)}>
                               <AiFillDelete
                                 style={{
@@ -148,20 +148,25 @@ const Blog = () => {
                       );
                     })}
                 </ul>
-                <h1 style={{ color: "#000", margin: "2rem" }}>
-                  Write a comment
-                </h1>
-                <form onSubmit={handlecomment}>
-                  <label htmlFor="comment"></label>
 
-                  <textarea
-                    id="comment"
-                    name="comment"
-                    placeholder="Write comments here..."
-                    required
-                  ></textarea>
-                  <button type="submit">Post Comment</button>
-                </form>
+                {userState && (
+                  <>
+                    <h1 style={{ color: "#000", margin: "2rem" }}>
+                      Write a comment
+                    </h1>
+                    <form onSubmit={handlecomment}>
+                      <label htmlFor="comment"></label>
+
+                      <textarea
+                        id="comment"
+                        name="comment"
+                        placeholder="Write comments here..."
+                        required
+                      ></textarea>
+                      <button type="submit">Post Comment</button>
+                    </form>
+                  </>
+                )}
               </div>
             </div>
           </article>
