@@ -39,30 +39,38 @@ const Blogs = () => {
   }, []);
 
   let likeshandle = (docid) => {
-    try {
-      async function updatedoc() {
-        const docRef = await updateDoc(doc(db, "posts", docid), {
-          likes: arrayUnion(userState.uid),
-        });
-        console.log("Updated", userState.uid);
+    if (userState != null) {
+      try {
+        async function updatedoc() {
+          const docRef = await updateDoc(doc(db, "posts", docid), {
+            likes: arrayUnion(userState.uid),
+          });
+          console.log("Updated");
+        }
+        updatedoc();
+      } catch (e) {
+        console.error("Error adding document: ", e);
       }
-      updatedoc();
-    } catch (e) {
-      console.error("Error adding document: ", e);
+    } else {
+      console.log("Must be logged in to like post!");
     }
   };
 
   let dislikeshandle = (docid) => {
-    try {
-      async function updatedoc() {
-        const docRef = await updateDoc(doc(db, "posts", docid), {
-          likes: arrayRemove(userState.uid),
-        });
-        console.log("Updated", userState.uid);
+    if (userState != null) {
+      try {
+        async function updatedoc() {
+          const docRef = await updateDoc(doc(db, "posts", docid), {
+            likes: arrayRemove(userState.uid),
+          });
+          console.log("Updated");
+        }
+        updatedoc();
+      } catch (e) {
+        console.error("Error adding document: ", e);
       }
-      updatedoc();
-    } catch (e) {
-      console.error("Error adding document: ", e);
+    } else {
+      console.log("Must be logged in to dislike post!");
     }
   };
 
