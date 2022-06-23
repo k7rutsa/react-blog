@@ -128,7 +128,8 @@ const Blogs = () => {
                       style={{ color: "black", fontSize: "15px" }}
                       onClick={() => likeshandle(post.docid)}
                     >
-                      ({post?.likes.length}) <br />
+                      ({post?.likes.length})
+                      <br />
                       <AiOutlineLike />
                     </span>
                   )}

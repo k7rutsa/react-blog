@@ -1,6 +1,6 @@
 import "./Blog.css";
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import {
   doc,
   getDoc,
@@ -71,7 +71,6 @@ const Blog = () => {
             username: userState.displayName,
           }),
         });
-        console.log("Updated Comments");
       }
       updatedoc();
     } catch (e) {
@@ -85,7 +84,6 @@ const Blog = () => {
         const docRef = await updateDoc(doc(db, "posts", id), {
           comments: arrayRemove(c),
         });
-        console.log("Deteted Comments");
       }
       updatedoc();
     } catch (e) {
@@ -149,7 +147,7 @@ const Blog = () => {
                     })}
                 </ul>
 
-                {userState && (
+                {userState != null ? (
                   <>
                     <h1 style={{ color: "#000", margin: "2rem" }}>
                       Write a comment
@@ -166,6 +164,18 @@ const Blog = () => {
                       <button type="submit">Post Comment</button>
                     </form>
                   </>
+                ) : (
+                  <Link
+                    to="/auth"
+                    style={{
+                      backgroundColor: "#E84545",
+                      margin: "2rem",
+                      display: "inline-block",
+                      width: "max-content",
+                    }}
+                  >
+                    Login to comment
+                  </Link>
                 )}
               </div>
             </div>

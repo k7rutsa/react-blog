@@ -80,6 +80,7 @@ const Addpost = () => {
               author: userState.displayName,
               likes: [],
               timestamp: serverTimestamp(),
+              comments: [],
             });
 
             navigate("/");
